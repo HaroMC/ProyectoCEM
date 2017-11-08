@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditPersonaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditPersonaLabel_rut}" for="rut" />
+                    <h:inputText id="rut" value="#{personaController.selected.rut}" title="#{bundle.EditPersonaTitle_rut}" required="true" requiredMessage="#{bundle.EditPersonaRequiredMessage_rut}"/>
+                    <h:outputLabel value="#{bundle.EditPersonaLabel_nombreCompleto}" for="nombreCompleto" />
+                    <h:inputText id="nombreCompleto" value="#{personaController.selected.nombreCompleto}" title="#{bundle.EditPersonaTitle_nombreCompleto}" required="true" requiredMessage="#{bundle.EditPersonaRequiredMessage_nombreCompleto}"/>
+                    <h:outputLabel value="#{bundle.EditPersonaLabel_fechaNacimiento}" for="fechaNacimiento" />
+                    <h:inputText id="fechaNacimiento" value="#{personaController.selected.fechaNacimiento}" title="#{bundle.EditPersonaTitle_fechaNacimiento}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditPersonaLabel_domicilio}" for="domicilio" />
+                    <h:inputText id="domicilio" value="#{personaController.selected.domicilio}" title="#{bundle.EditPersonaTitle_domicilio}" required="true" requiredMessage="#{bundle.EditPersonaRequiredMessage_domicilio}"/>
+                    <h:outputLabel value="#{bundle.EditPersonaLabel_ciudad}" for="ciudad" />
+                    <h:inputText id="ciudad" value="#{personaController.selected.ciudad}" title="#{bundle.EditPersonaTitle_ciudad}" required="true" requiredMessage="#{bundle.EditPersonaRequiredMessage_ciudad}"/>
+                    <h:outputLabel value="#{bundle.EditPersonaLabel_pais}" for="pais" />
+                    <h:inputText id="pais" value="#{personaController.selected.pais}" title="#{bundle.EditPersonaTitle_pais}" required="true" requiredMessage="#{bundle.EditPersonaRequiredMessage_pais}"/>
+                    <h:outputLabel value="#{bundle.EditPersonaLabel_correo}" for="correo" />
+                    <h:inputText id="correo" value="#{personaController.selected.correo}" title="#{bundle.EditPersonaTitle_correo}" />
+                    <h:outputLabel value="#{bundle.EditPersonaLabel_telefono}" for="telefono" />
+                    <h:inputText id="telefono" value="#{personaController.selected.telefono}" title="#{bundle.EditPersonaTitle_telefono}" />
+                    <h:outputLabel value="#{bundle.EditPersonaLabel_tipo}" for="tipo" />
+                    <h:inputText id="tipo" value="#{personaController.selected.tipo}" title="#{bundle.EditPersonaTitle_tipo}" required="true" requiredMessage="#{bundle.EditPersonaRequiredMessage_tipo}"/>
+                    <h:outputLabel value="#{bundle.EditPersonaLabel_familiaAnfitriona}" for="familiaAnfitriona" />
+                    <h:selectOneMenu id="familiaAnfitriona" value="#{personaController.selected.familiaAnfitriona}" title="#{bundle.EditPersonaTitle_familiaAnfitriona}" >
+                        <f:selectItems value="#{familiaAnfitrionaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPersonaLabel_centroEstudiosLocal}" for="centroEstudiosLocal" />
+                    <h:selectOneMenu id="centroEstudiosLocal" value="#{personaController.selected.centroEstudiosLocal}" title="#{bundle.EditPersonaTitle_centroEstudiosLocal}" >
+                        <f:selectItems value="#{centroEstudiosLocalController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPersonaLabel_alumno}" for="alumno" />
+                    <h:selectOneMenu id="alumno" value="#{personaController.selected.alumno}" title="#{bundle.EditPersonaTitle_alumno}" >
+                        <f:selectItems value="#{alumnoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPersonaLabel_usuario}" for="usuario" />
+                    <h:selectOneMenu id="usuario" value="#{personaController.selected.usuario}" title="#{bundle.EditPersonaTitle_usuario}" >
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditPersonaLabel_docente}" for="docente" />
+                    <h:selectOneMenu id="docente" value="#{personaController.selected.docente}" title="#{bundle.EditPersonaTitle_docente}" >
+                        <f:selectItems value="#{docenteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{personaController.update}" value="#{bundle.EditPersonaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditPersonaViewLink}"/>
+                <br />
+                <h:commandLink action="#{personaController.prepareList}" value="#{bundle.EditPersonaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditPersonaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

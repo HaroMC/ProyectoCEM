@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewCentroEstudiosLocalTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewCentroEstudiosLocalLabel_rutPersona}"/>
+                    <h:outputText value="#{centroEstudiosLocalController.selected.rutPersona}" title="#{bundle.ViewCentroEstudiosLocalTitle_rutPersona}"/>
+                    <h:outputText value="#{bundle.ViewCentroEstudiosLocalLabel_estaAcreditada}"/>
+                    <h:outputText value="#{centroEstudiosLocalController.selected.estaAcreditada}" title="#{bundle.ViewCentroEstudiosLocalTitle_estaAcreditada}"/>
+                    <h:outputText value="#{bundle.ViewCentroEstudiosLocalLabel_persona}"/>
+                    <h:outputText value="#{centroEstudiosLocalController.selected.persona}" title="#{bundle.ViewCentroEstudiosLocalTitle_persona}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{centroEstudiosLocalController.destroyAndView}" value="#{bundle.ViewCentroEstudiosLocalDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewCentroEstudiosLocalEditLink}"/>
+                <br />
+                <h:commandLink action="#{centroEstudiosLocalController.prepareCreate}" value="#{bundle.ViewCentroEstudiosLocalCreateLink}" />
+                <br />
+                <h:commandLink action="#{centroEstudiosLocalController.prepareList}" value="#{bundle.ViewCentroEstudiosLocalShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewCentroEstudiosLocalIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

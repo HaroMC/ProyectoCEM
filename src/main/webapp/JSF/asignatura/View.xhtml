@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewAsignaturaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAsignaturaLabel_codigo}"/>
+                    <h:outputText value="#{asignaturaController.selected.codigo}" title="#{bundle.ViewAsignaturaTitle_codigo}"/>
+                    <h:outputText value="#{bundle.ViewAsignaturaLabel_nombreAsignatura}"/>
+                    <h:outputText value="#{asignaturaController.selected.nombreAsignatura}" title="#{bundle.ViewAsignaturaTitle_nombreAsignatura}"/>
+                    <h:outputText value="#{bundle.ViewAsignaturaLabel_descripcion}"/>
+                    <h:outputText value="#{asignaturaController.selected.descripcion}" title="#{bundle.ViewAsignaturaTitle_descripcion}"/>
+                    <h:outputText value="#{bundle.ViewAsignaturaLabel_cupos}"/>
+                    <h:outputText value="#{asignaturaController.selected.cupos}" title="#{bundle.ViewAsignaturaTitle_cupos}"/>
+                    <h:outputText value="#{bundle.ViewAsignaturaLabel_rutDocente}"/>
+                    <h:outputText value="#{asignaturaController.selected.rutDocente}" title="#{bundle.ViewAsignaturaTitle_rutDocente}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{asignaturaController.destroyAndView}" value="#{bundle.ViewAsignaturaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAsignaturaEditLink}"/>
+                <br />
+                <h:commandLink action="#{asignaturaController.prepareCreate}" value="#{bundle.ViewAsignaturaCreateLink}" />
+                <br />
+                <h:commandLink action="#{asignaturaController.prepareList}" value="#{bundle.ViewAsignaturaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAsignaturaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

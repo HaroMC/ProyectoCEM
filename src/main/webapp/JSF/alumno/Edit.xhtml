@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAlumnoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAlumnoLabel_rutPersona}" for="rutPersona" />
+                    <h:inputText id="rutPersona" value="#{alumnoController.selected.rutPersona}" title="#{bundle.EditAlumnoTitle_rutPersona}" required="true" requiredMessage="#{bundle.EditAlumnoRequiredMessage_rutPersona}"/>
+                    <h:outputLabel value="#{bundle.EditAlumnoLabel_numeroMatricula}" for="numeroMatricula" />
+                    <h:inputText id="numeroMatricula" value="#{alumnoController.selected.numeroMatricula}" title="#{bundle.EditAlumnoTitle_numeroMatricula}" required="true" requiredMessage="#{bundle.EditAlumnoRequiredMessage_numeroMatricula}"/>
+                    <h:outputLabel value="#{bundle.EditAlumnoLabel_fechaMatricula}" for="fechaMatricula" />
+                    <h:inputText id="fechaMatricula" value="#{alumnoController.selected.fechaMatricula}" title="#{bundle.EditAlumnoTitle_fechaMatricula}" required="true" requiredMessage="#{bundle.EditAlumnoRequiredMessage_fechaMatricula}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditAlumnoLabel_persona}" for="persona" />
+                    <h:selectOneMenu id="persona" value="#{alumnoController.selected.persona}" title="#{bundle.EditAlumnoTitle_persona}" required="true" requiredMessage="#{bundle.EditAlumnoRequiredMessage_persona}">
+                        <f:selectItems value="#{personaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{alumnoController.update}" value="#{bundle.EditAlumnoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAlumnoViewLink}"/>
+                <br />
+                <h:commandLink action="#{alumnoController.prepareList}" value="#{bundle.EditAlumnoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAlumnoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

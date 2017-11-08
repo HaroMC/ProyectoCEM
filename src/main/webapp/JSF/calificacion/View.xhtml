@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewCalificacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewCalificacionLabel_codigo}"/>
+                    <h:outputText value="#{calificacionController.selected.codigo}" title="#{bundle.ViewCalificacionTitle_codigo}"/>
+                    <h:outputText value="#{bundle.ViewCalificacionLabel_fechaCalificacion}"/>
+                    <h:outputText value="#{calificacionController.selected.fechaCalificacion}" title="#{bundle.ViewCalificacionTitle_fechaCalificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewCalificacionLabel_nota}"/>
+                    <h:outputText value="#{calificacionController.selected.nota}" title="#{bundle.ViewCalificacionTitle_nota}"/>
+                    <h:outputText value="#{bundle.ViewCalificacionLabel_rutAlumno}"/>
+                    <h:outputText value="#{calificacionController.selected.rutAlumno}" title="#{bundle.ViewCalificacionTitle_rutAlumno}"/>
+                    <h:outputText value="#{bundle.ViewCalificacionLabel_codAsignatura}"/>
+                    <h:outputText value="#{calificacionController.selected.codAsignatura}" title="#{bundle.ViewCalificacionTitle_codAsignatura}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{calificacionController.destroyAndView}" value="#{bundle.ViewCalificacionDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewCalificacionEditLink}"/>
+                <br />
+                <h:commandLink action="#{calificacionController.prepareCreate}" value="#{bundle.ViewCalificacionCreateLink}" />
+                <br />
+                <h:commandLink action="#{calificacionController.prepareList}" value="#{bundle.ViewCalificacionShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewCalificacionIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

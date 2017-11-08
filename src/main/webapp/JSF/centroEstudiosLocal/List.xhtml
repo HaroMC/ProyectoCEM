@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCentroEstudiosLocalTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListCentroEstudiosLocalEmpty}" rendered="#{centroEstudiosLocalController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{centroEstudiosLocalController.items.rowCount > 0}">
+                    <h:outputText value="#{centroEstudiosLocalController.pagination.pageFirstItem + 1}..#{centroEstudiosLocalController.pagination.pageLastItem + 1}/#{centroEstudiosLocalController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{centroEstudiosLocalController.previous}" value="#{bundle.Previous} #{centroEstudiosLocalController.pagination.pageSize}" rendered="#{centroEstudiosLocalController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{centroEstudiosLocalController.next}" value="#{bundle.Next} #{centroEstudiosLocalController.pagination.pageSize}" rendered="#{centroEstudiosLocalController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{centroEstudiosLocalController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCentroEstudiosLocalTitle_rutPersona}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.rutPersona}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCentroEstudiosLocalTitle_estaAcreditada}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estaAcreditada}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCentroEstudiosLocalTitle_persona}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.persona}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{centroEstudiosLocalController.prepareView}" value="#{bundle.ListCentroEstudiosLocalViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{centroEstudiosLocalController.prepareEdit}" value="#{bundle.ListCentroEstudiosLocalEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{centroEstudiosLocalController.destroy}" value="#{bundle.ListCentroEstudiosLocalDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{centroEstudiosLocalController.prepareCreate}" value="#{bundle.ListCentroEstudiosLocalCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListCentroEstudiosLocalIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

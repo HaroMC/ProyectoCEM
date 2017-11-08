@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewProgramaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewProgramaLabel_codigo}"/>
+                    <h:outputText value="#{programaController.selected.codigo}" title="#{bundle.ViewProgramaTitle_codigo}"/>
+                    <h:outputText value="#{bundle.ViewProgramaLabel_nombre}"/>
+                    <h:outputText value="#{programaController.selected.nombre}" title="#{bundle.ViewProgramaTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewProgramaLabel_fechaInicio}"/>
+                    <h:outputText value="#{programaController.selected.fechaInicio}" title="#{bundle.ViewProgramaTitle_fechaInicio}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewProgramaLabel_fechaTermino}"/>
+                    <h:outputText value="#{programaController.selected.fechaTermino}" title="#{bundle.ViewProgramaTitle_fechaTermino}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewProgramaLabel_valor}"/>
+                    <h:outputText value="#{programaController.selected.valor}" title="#{bundle.ViewProgramaTitle_valor}"/>
+                    <h:outputText value="#{bundle.ViewProgramaLabel_estado}"/>
+                    <h:outputText value="#{programaController.selected.estado}" title="#{bundle.ViewProgramaTitle_estado}"/>
+                    <h:outputText value="#{bundle.ViewProgramaLabel_codAsignatura}"/>
+                    <h:outputText value="#{programaController.selected.codAsignatura}" title="#{bundle.ViewProgramaTitle_codAsignatura}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{programaController.destroyAndView}" value="#{bundle.ViewProgramaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewProgramaEditLink}"/>
+                <br />
+                <h:commandLink action="#{programaController.prepareCreate}" value="#{bundle.ViewProgramaCreateLink}" />
+                <br />
+                <h:commandLink action="#{programaController.prepareList}" value="#{bundle.ViewProgramaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewProgramaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

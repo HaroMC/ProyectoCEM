@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewAntecedenteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAntecedenteLabel_codigo}"/>
+                    <h:outputText value="#{antecedenteController.selected.codigo}" title="#{bundle.ViewAntecedenteTitle_codigo}"/>
+                    <h:outputText value="#{bundle.ViewAntecedenteLabel_descripcion}"/>
+                    <h:outputText value="#{antecedenteController.selected.descripcion}" title="#{bundle.ViewAntecedenteTitle_descripcion}"/>
+                    <h:outputText value="#{bundle.ViewAntecedenteLabel_fechaCaducidad}"/>
+                    <h:outputText value="#{antecedenteController.selected.fechaCaducidad}" title="#{bundle.ViewAntecedenteTitle_fechaCaducidad}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewAntecedenteLabel_documento}"/>
+                    <h:outputText value="#{antecedenteController.selected.documento}" title="#{bundle.ViewAntecedenteTitle_documento}"/>
+                    <h:outputText value="#{bundle.ViewAntecedenteLabel_rutFamilia}"/>
+                    <h:outputText value="#{antecedenteController.selected.rutFamilia}" title="#{bundle.ViewAntecedenteTitle_rutFamilia}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{antecedenteController.destroyAndView}" value="#{bundle.ViewAntecedenteDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAntecedenteEditLink}"/>
+                <br />
+                <h:commandLink action="#{antecedenteController.prepareCreate}" value="#{bundle.ViewAntecedenteCreateLink}" />
+                <br />
+                <h:commandLink action="#{antecedenteController.prepareList}" value="#{bundle.ViewAntecedenteShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAntecedenteIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

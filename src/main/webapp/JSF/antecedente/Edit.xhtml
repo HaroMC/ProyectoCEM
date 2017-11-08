@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAntecedenteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAntecedenteLabel_codigo}" for="codigo" />
+                    <h:inputText id="codigo" value="#{antecedenteController.selected.codigo}" title="#{bundle.EditAntecedenteTitle_codigo}" required="true" requiredMessage="#{bundle.EditAntecedenteRequiredMessage_codigo}"/>
+                    <h:outputLabel value="#{bundle.EditAntecedenteLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{antecedenteController.selected.descripcion}" title="#{bundle.EditAntecedenteTitle_descripcion}" required="true" requiredMessage="#{bundle.EditAntecedenteRequiredMessage_descripcion}"/>
+                    <h:outputLabel value="#{bundle.EditAntecedenteLabel_fechaCaducidad}" for="fechaCaducidad" />
+                    <h:inputText id="fechaCaducidad" value="#{antecedenteController.selected.fechaCaducidad}" title="#{bundle.EditAntecedenteTitle_fechaCaducidad}" required="true" requiredMessage="#{bundle.EditAntecedenteRequiredMessage_fechaCaducidad}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditAntecedenteLabel_documento}" for="documento" />
+                    <h:inputTextarea rows="4" cols="30" id="documento" value="#{antecedenteController.selected.documento}" title="#{bundle.EditAntecedenteTitle_documento}" />
+                    <h:outputLabel value="#{bundle.EditAntecedenteLabel_rutFamilia}" for="rutFamilia" />
+                    <h:selectOneMenu id="rutFamilia" value="#{antecedenteController.selected.rutFamilia}" title="#{bundle.EditAntecedenteTitle_rutFamilia}" required="true" requiredMessage="#{bundle.EditAntecedenteRequiredMessage_rutFamilia}">
+                        <f:selectItems value="#{familiaAnfitrionaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{antecedenteController.update}" value="#{bundle.EditAntecedenteSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAntecedenteViewLink}"/>
+                <br />
+                <h:commandLink action="#{antecedenteController.prepareList}" value="#{bundle.EditAntecedenteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAntecedenteIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

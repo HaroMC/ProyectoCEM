@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDocenteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditDocenteLabel_rutPersona}" for="rutPersona" />
+                    <h:inputText id="rutPersona" value="#{docenteController.selected.rutPersona}" title="#{bundle.EditDocenteTitle_rutPersona}" required="true" requiredMessage="#{bundle.EditDocenteRequiredMessage_rutPersona}"/>
+                    <h:outputLabel value="#{bundle.EditDocenteLabel_estado}" for="estado" />
+                    <h:inputText id="estado" value="#{docenteController.selected.estado}" title="#{bundle.EditDocenteTitle_estado}" />
+                    <h:outputLabel value="#{bundle.EditDocenteLabel_observaciones}" for="observaciones" />
+                    <h:inputText id="observaciones" value="#{docenteController.selected.observaciones}" title="#{bundle.EditDocenteTitle_observaciones}" />
+                    <h:outputLabel value="#{bundle.EditDocenteLabel_persona}" for="persona" />
+                    <h:selectOneMenu id="persona" value="#{docenteController.selected.persona}" title="#{bundle.EditDocenteTitle_persona}" required="true" requiredMessage="#{bundle.EditDocenteRequiredMessage_persona}">
+                        <f:selectItems value="#{personaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{docenteController.update}" value="#{bundle.EditDocenteSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditDocenteViewLink}"/>
+                <br />
+                <h:commandLink action="#{docenteController.prepareList}" value="#{bundle.EditDocenteShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditDocenteIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

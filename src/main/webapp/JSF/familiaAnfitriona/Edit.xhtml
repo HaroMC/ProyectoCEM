@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditFamiliaAnfitrionaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditFamiliaAnfitrionaLabel_rutPersona}" for="rutPersona" />
+                    <h:inputText id="rutPersona" value="#{familiaAnfitrionaController.selected.rutPersona}" title="#{bundle.EditFamiliaAnfitrionaTitle_rutPersona}" required="true" requiredMessage="#{bundle.EditFamiliaAnfitrionaRequiredMessage_rutPersona}"/>
+                    <h:outputLabel value="#{bundle.EditFamiliaAnfitrionaLabel_cantidadIntegrantes}" for="cantidadIntegrantes" />
+                    <h:inputText id="cantidadIntegrantes" value="#{familiaAnfitrionaController.selected.cantidadIntegrantes}" title="#{bundle.EditFamiliaAnfitrionaTitle_cantidadIntegrantes}" required="true" requiredMessage="#{bundle.EditFamiliaAnfitrionaRequiredMessage_cantidadIntegrantes}"/>
+                    <h:outputLabel value="#{bundle.EditFamiliaAnfitrionaLabel_estado}" for="estado" />
+                    <h:inputText id="estado" value="#{familiaAnfitrionaController.selected.estado}" title="#{bundle.EditFamiliaAnfitrionaTitle_estado}" required="true" requiredMessage="#{bundle.EditFamiliaAnfitrionaRequiredMessage_estado}"/>
+                    <h:outputLabel value="#{bundle.EditFamiliaAnfitrionaLabel_persona}" for="persona" />
+                    <h:selectOneMenu id="persona" value="#{familiaAnfitrionaController.selected.persona}" title="#{bundle.EditFamiliaAnfitrionaTitle_persona}" required="true" requiredMessage="#{bundle.EditFamiliaAnfitrionaRequiredMessage_persona}">
+                        <f:selectItems value="#{personaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{familiaAnfitrionaController.update}" value="#{bundle.EditFamiliaAnfitrionaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditFamiliaAnfitrionaViewLink}"/>
+                <br />
+                <h:commandLink action="#{familiaAnfitrionaController.prepareList}" value="#{bundle.EditFamiliaAnfitrionaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditFamiliaAnfitrionaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

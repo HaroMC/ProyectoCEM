@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewPostulacionesCelTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewPostulacionesCelLabel_codigo}"/>
+                    <h:outputText value="#{postulacionesCelController.selected.codigo}" title="#{bundle.ViewPostulacionesCelTitle_codigo}"/>
+                    <h:outputText value="#{bundle.ViewPostulacionesCelLabel_fechaInscripcion}"/>
+                    <h:outputText value="#{postulacionesCelController.selected.fechaInscripcion}" title="#{bundle.ViewPostulacionesCelTitle_fechaInscripcion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewPostulacionesCelLabel_estado}"/>
+                    <h:outputText value="#{postulacionesCelController.selected.estado}" title="#{bundle.ViewPostulacionesCelTitle_estado}"/>
+                    <h:outputText value="#{bundle.ViewPostulacionesCelLabel_rutCel}"/>
+                    <h:outputText value="#{postulacionesCelController.selected.rutCel}" title="#{bundle.ViewPostulacionesCelTitle_rutCel}"/>
+                    <h:outputText value="#{bundle.ViewPostulacionesCelLabel_codPrograma}"/>
+                    <h:outputText value="#{postulacionesCelController.selected.codPrograma}" title="#{bundle.ViewPostulacionesCelTitle_codPrograma}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{postulacionesCelController.destroyAndView}" value="#{bundle.ViewPostulacionesCelDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewPostulacionesCelEditLink}"/>
+                <br />
+                <h:commandLink action="#{postulacionesCelController.prepareCreate}" value="#{bundle.ViewPostulacionesCelCreateLink}" />
+                <br />
+                <h:commandLink action="#{postulacionesCelController.prepareList}" value="#{bundle.ViewPostulacionesCelShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewPostulacionesCelIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

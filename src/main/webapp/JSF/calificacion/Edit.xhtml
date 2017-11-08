@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCalificacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCalificacionLabel_codigo}" for="codigo" />
+                    <h:inputText id="codigo" value="#{calificacionController.selected.codigo}" title="#{bundle.EditCalificacionTitle_codigo}" required="true" requiredMessage="#{bundle.EditCalificacionRequiredMessage_codigo}"/>
+                    <h:outputLabel value="#{bundle.EditCalificacionLabel_fechaCalificacion}" for="fechaCalificacion" />
+                    <h:inputText id="fechaCalificacion" value="#{calificacionController.selected.fechaCalificacion}" title="#{bundle.EditCalificacionTitle_fechaCalificacion}" required="true" requiredMessage="#{bundle.EditCalificacionRequiredMessage_fechaCalificacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditCalificacionLabel_nota}" for="nota" />
+                    <h:inputText id="nota" value="#{calificacionController.selected.nota}" title="#{bundle.EditCalificacionTitle_nota}" required="true" requiredMessage="#{bundle.EditCalificacionRequiredMessage_nota}"/>
+                    <h:outputLabel value="#{bundle.EditCalificacionLabel_rutAlumno}" for="rutAlumno" />
+                    <h:selectOneMenu id="rutAlumno" value="#{calificacionController.selected.rutAlumno}" title="#{bundle.EditCalificacionTitle_rutAlumno}" required="true" requiredMessage="#{bundle.EditCalificacionRequiredMessage_rutAlumno}">
+                        <f:selectItems value="#{alumnoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditCalificacionLabel_codAsignatura}" for="codAsignatura" />
+                    <h:selectOneMenu id="codAsignatura" value="#{calificacionController.selected.codAsignatura}" title="#{bundle.EditCalificacionTitle_codAsignatura}" required="true" requiredMessage="#{bundle.EditCalificacionRequiredMessage_codAsignatura}">
+                        <f:selectItems value="#{asignaturaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{calificacionController.update}" value="#{bundle.EditCalificacionSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCalificacionViewLink}"/>
+                <br />
+                <h:commandLink action="#{calificacionController.prepareList}" value="#{bundle.EditCalificacionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCalificacionIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCertificadoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListCertificadoEmpty}" rendered="#{certificadoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{certificadoController.items.rowCount > 0}">
+                    <h:outputText value="#{certificadoController.pagination.pageFirstItem + 1}..#{certificadoController.pagination.pageLastItem + 1}/#{certificadoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{certificadoController.previous}" value="#{bundle.Previous} #{certificadoController.pagination.pageSize}" rendered="#{certificadoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{certificadoController.next}" value="#{bundle.Next} #{certificadoController.pagination.pageSize}" rendered="#{certificadoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{certificadoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCertificadoTitle_codigo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCertificadoTitle_fechaSolicitud}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaSolicitud}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCertificadoTitle_rutAlumno}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.rutAlumno}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{certificadoController.prepareView}" value="#{bundle.ListCertificadoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{certificadoController.prepareEdit}" value="#{bundle.ListCertificadoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{certificadoController.destroy}" value="#{bundle.ListCertificadoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{certificadoController.prepareCreate}" value="#{bundle.ListCertificadoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListCertificadoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewDocenteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewDocenteLabel_rutPersona}"/>
+                    <h:outputText value="#{docenteController.selected.rutPersona}" title="#{bundle.ViewDocenteTitle_rutPersona}"/>
+                    <h:outputText value="#{bundle.ViewDocenteLabel_estado}"/>
+                    <h:outputText value="#{docenteController.selected.estado}" title="#{bundle.ViewDocenteTitle_estado}"/>
+                    <h:outputText value="#{bundle.ViewDocenteLabel_observaciones}"/>
+                    <h:outputText value="#{docenteController.selected.observaciones}" title="#{bundle.ViewDocenteTitle_observaciones}"/>
+                    <h:outputText value="#{bundle.ViewDocenteLabel_persona}"/>
+                    <h:outputText value="#{docenteController.selected.persona}" title="#{bundle.ViewDocenteTitle_persona}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{docenteController.destroyAndView}" value="#{bundle.ViewDocenteDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewDocenteEditLink}"/>
+                <br />
+                <h:commandLink action="#{docenteController.prepareCreate}" value="#{bundle.ViewDocenteCreateLink}" />
+                <br />
+                <h:commandLink action="#{docenteController.prepareList}" value="#{bundle.ViewDocenteShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewDocenteIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

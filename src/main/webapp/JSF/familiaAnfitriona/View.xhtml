@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewFamiliaAnfitrionaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewFamiliaAnfitrionaLabel_rutPersona}"/>
+                    <h:outputText value="#{familiaAnfitrionaController.selected.rutPersona}" title="#{bundle.ViewFamiliaAnfitrionaTitle_rutPersona}"/>
+                    <h:outputText value="#{bundle.ViewFamiliaAnfitrionaLabel_cantidadIntegrantes}"/>
+                    <h:outputText value="#{familiaAnfitrionaController.selected.cantidadIntegrantes}" title="#{bundle.ViewFamiliaAnfitrionaTitle_cantidadIntegrantes}"/>
+                    <h:outputText value="#{bundle.ViewFamiliaAnfitrionaLabel_estado}"/>
+                    <h:outputText value="#{familiaAnfitrionaController.selected.estado}" title="#{bundle.ViewFamiliaAnfitrionaTitle_estado}"/>
+                    <h:outputText value="#{bundle.ViewFamiliaAnfitrionaLabel_persona}"/>
+                    <h:outputText value="#{familiaAnfitrionaController.selected.persona}" title="#{bundle.ViewFamiliaAnfitrionaTitle_persona}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{familiaAnfitrionaController.destroyAndView}" value="#{bundle.ViewFamiliaAnfitrionaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewFamiliaAnfitrionaEditLink}"/>
+                <br />
+                <h:commandLink action="#{familiaAnfitrionaController.prepareCreate}" value="#{bundle.ViewFamiliaAnfitrionaCreateLink}" />
+                <br />
+                <h:commandLink action="#{familiaAnfitrionaController.prepareList}" value="#{bundle.ViewFamiliaAnfitrionaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewFamiliaAnfitrionaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
