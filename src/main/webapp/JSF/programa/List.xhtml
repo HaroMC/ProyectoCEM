@@ -5,15 +5,15 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <ui:composition template="/template.xhtml">
+    <ui:composition template="../CEM_menu.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.ListProgramaTitle}"></h:outputText>
         </ui:define>
-        <ui:define name="body">
-            <h:form styleClass="jsfcrud_list_form">
-                <h:panelGroup id="messagePanel" layout="block">
+        <ui:define name="content">
+            <h:form>
+               <!-- <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-                </h:panelGroup>
+                </h:panelGroup> -->
                 <h:outputText escape="false" value="#{bundle.ListProgramaEmpty}" rendered="#{programaController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{programaController.items.rowCount > 0}">
                     <h:outputText value="#{programaController.pagination.pageFirstItem + 1}..#{programaController.pagination.pageLastItem + 1}/#{programaController.pagination.itemsCount}"/>&nbsp;
@@ -70,7 +70,6 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{programaController.prepareView}" value="#{bundle.ListProgramaViewLink}"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{programaController.prepareEdit}" value="#{bundle.ListProgramaEditLink}"/>
                             <h:outputText value=" "/>
