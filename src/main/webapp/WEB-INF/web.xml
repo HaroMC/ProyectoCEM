@@ -9,9 +9,17 @@
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>Autenticar</servlet-name>
+        <servlet-class>cem.intercambios.controlador.servlet.Autenticar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Autenticar</servlet-name>
+        <url-pattern>/Autenticar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

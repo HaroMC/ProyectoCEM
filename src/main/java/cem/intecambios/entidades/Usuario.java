@@ -77,6 +77,11 @@ public class Usuario implements Serializable {
         this.codigo = codigo;
     }
 
+    public Usuario(String nombre, String perfil) {
+        this.nombre = nombre;
+        this.perfil = perfil;
+    }
+
     public Usuario(BigDecimal codigo, String nombre, String contrasena, Date fechaRegistro, String perfil) {
         this.codigo = codigo;
         this.nombre = nombre;
